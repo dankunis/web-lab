@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2019-03-07-03-create-users-table" author="developerRus">
+
+        <createTable tableName="users">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="first_name" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_name" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="patronymic" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="nick_name" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="email" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="password" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="phone_number" type="varchar(20)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="invited_at" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="department_id" type="int" autoIncrement="false">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="users"
+            baseColumnNames="department_id"
+            constraintName="fk_users_department__departments"
+            referencedColumnNames="id"
+            referencedTableName="departments"/>
+
+    </changeSet>
+</databaseChangeLog>

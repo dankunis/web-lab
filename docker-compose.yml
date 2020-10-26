@@ -1,0 +1,38 @@
+version: '3.1'
+services:
+  db:
+    image: postgres:11
+    restart: always
+    ports: ["5433:5432"]
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: mydb
+      POSTGRES_PASSWORD: mydb
+
+  api:
+    depends_on:
+      - db
+      - migrations
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: homework1
+    restart: always
+    ports: ["5000:80"]
+    environment:
+      ConnectionString : 'Host=db;Port=5432;Database=mydb;Username=mydb;Password=mydb'
+
+  migrations:
+    build:
+      context: .
+      dockerfile: ./Migrations.Dockerfile
+    image: migrations
+    depends_on:
+      - db
+    environment:
+      - loglevel=debug
+      - username=mydb
+      - password=mydb
+      - dbname=mydb
+      - host=db
+      - port=5432

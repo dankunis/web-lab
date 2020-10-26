@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2019-03-07-04-create-payroll-histories-table" author="developerRus">
+
+        <createTable tableName="payroll_histories">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="user_id" type="int" autoIncrement="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="value_rate" type="money">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="update_at" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="payroll_histories"
+                baseColumnNames="user_id"
+                constraintName="fk_payroll_histories_user__users"
+                referencedColumnNames="id"
+                referencedTableName="users"/>
+
+    </changeSet>
+
+</databaseChangeLog>

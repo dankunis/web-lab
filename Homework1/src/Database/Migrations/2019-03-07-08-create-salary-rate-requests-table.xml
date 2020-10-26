@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2019-03-07-08-create-salary-rate-requests-table" author="developerRus">
+
+        <createTable tableName="salary_rate_requests">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="request_id" type="uuid">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="user_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="value_rate" type="money">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="description" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="invited_at" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="manager_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="reply" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="internal_comment" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="salary_rate_requests"
+            baseColumnNames="user_id"
+            constraintName="fk_salary_rate_requests_user__users"
+            referencedColumnNames="id"
+            referencedTableName="users"/>
+
+        <addForeignKeyConstraint
+            baseTableName="salary_rate_requests"
+            baseColumnNames="manager_id"
+            constraintName="fk_salary_rate_requests_manager__users"
+            referencedColumnNames="id"
+            referencedTableName="users"/>
+
+    </changeSet>
+
+</databaseChangeLog>

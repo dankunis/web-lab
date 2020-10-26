@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2019-03-07-11-create-messages-table" author="developerRus">
+
+        <createTable tableName="messages">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="user_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="chat_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="text" type="text">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="invited_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="messages"
+            baseColumnNames="user_id"
+            constraintName="fk_messages_user__users"
+            referencedColumnNames="id"
+            referencedTableName="users"/>
+
+        <addForeignKeyConstraint
+            baseTableName="messages"
+            baseColumnNames="chat_id"
+            constraintName="fk_messages_chat__chats"
+            referencedColumnNames="id"
+            referencedTableName="chats"/>
+
+    </changeSet>
+
+</databaseChangeLog>

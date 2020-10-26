@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <include file="2019-03-07-01-create-departments-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-02-create-roles-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-03-create-users-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-04-create-payroll-histories-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-05-add-column-current-salary-rate-to-users-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-06-create-user-roles-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-07-create-management-areas-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-08-create-salary-rate-requests-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-09-create-chats-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-10-create-user-chats-table.xml" relativeToChangelogFile="true"/>
+    <include file="2019-03-07-11-create-messages-table.xml" relativeToChangelogFile="true"/>
+    <include file="Seed/index.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

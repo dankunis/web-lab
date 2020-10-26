@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2019-03-07-05-add-column-current-salary-rate-to-users-table.xml" author="developerRus">
+
+        <addColumn tableName="users">
+            <column name="current_salary_rate_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+
+        <addForeignKeyConstraint
+            baseTableName="users"
+            baseColumnNames="current_salary_rate_id"
+            constraintName="fk_users_current_salary_rate__payroll_histories"
+            referencedColumnNames="id"
+            referencedTableName="payroll_histories"/>
+
+    </changeSet>
+
+</databaseChangeLog>
