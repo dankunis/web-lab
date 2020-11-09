@@ -12,8 +12,8 @@ jobs:
     if: github.event.pull_request.merged
     steps:
       - name: checkout
+      - uses: actions/checkout@v2
         if: github.event.pull_request.merged
-        uses: actions/checkout@v2
         run: |
           echo Building project...
           echo Connecting to server...
