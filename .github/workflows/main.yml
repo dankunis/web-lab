@@ -1,0 +1,19 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy once tha master branch has been pushed to
+      run:  |
+        echo Building project...
+        echo Connecting to server...
+        echo Deploying...
+        echo Done!
