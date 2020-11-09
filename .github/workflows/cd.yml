@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged
     steps:
-      - name: checkout
       - uses: actions/checkout@v2
+      - name: checkout
         if: github.event.pull_request.merged
         run: |
           echo Building project...
