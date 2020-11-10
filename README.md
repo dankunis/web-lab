@@ -1,6 +1,6 @@
 # DbSheme
 
-![DbSheme](./img/DbScheme1v2.png)
+![DbSheme](./img/DbScheme1v2.png "Схема БД")
 
 # WebSocket Сhat
 
