@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Liquibase image
-      run: docker image build -f Liquibase.Dockerfile .
-    - name: Run the tests
-      run: docker-compose up
+    - name: Build images & run tests
+      run: |
+        docker image build -f Liquibase.Dockerfile .
+        docker-compose up
