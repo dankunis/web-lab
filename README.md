@@ -1,6 +1,6 @@
 # DbSheme
 
-![DbSheme](https://github.com/DeveloperRus/Qoden/blob/master/img/DbScheme1v2.png)
+![DbSheme](./img/DbScheme1v2.png)
 
 # WebSocket chat
 
